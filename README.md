@@ -6,8 +6,6 @@ website: "mike-awad.com"
 
 # Forms Biuld
 
-====
-
 Create multiple forms within a single project to explore the full potential of react-hook-form and enhance your application’s functionality.
 
 ## What we will use in this project
@@ -22,14 +20,14 @@ Create multiple forms within a single project to explore the full potential of r
 ### Additions
 
 - [next-intl](https://next-intl-docs.vercel.app): Next.js internationalization (i18n).
-- [shadcu/ui](https://ui.shadcn.com/): components that you can copy and paste into your apps.
+- [shadcu/ui](https://ui.shadcn.com): components that you can copy and paste into your apps.
 - next-themes: Dark mode
 
 ### for database
 
+- sqlite3: simpl database SQL
+- [prisma](https://www.prisma.io): simplifying database interactions, schema evolution, and data management.
 - @prisma/client
-- sqlite3
-- prisma
 
 ## Notes:
 
