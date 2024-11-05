@@ -1,5 +1,5 @@
 // ===================== //
-// = layout for local  = //
+// = layout for locale  = //
 // ===================== //
 
 // === i18n Next-init === //
@@ -10,17 +10,20 @@ import { routing } from "@/i18n/routing";
 // === Next.Js === //
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-
+import "../globals.css";
 // === Next.Js === //
+// === Theme Provider === //
+import { ThemeProvider } from "@/lib/theme-provider";
+// === Theme Provider === //
 // === Next 15 New Font === //
 import localFont from "next/font/local";
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "../fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "../fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
@@ -32,11 +35,12 @@ export const metadata: Metadata = {
 // ===================== //
 export default async function LocaleLayout({
   children,
-  params: { locale },
-}: {
+  params,
+}: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
-}) {
+}>) {
+  const { locale } = await params; // Awaiting params to access locale
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) {
     notFound();
@@ -47,12 +51,16 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html
+      lang={locale}
+      suppressHydrationWarning={true}
+      dir={locale === "en" ? "ltr" : "rtl"}
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <ThemeProvider>{children}</ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

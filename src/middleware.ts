@@ -10,8 +10,8 @@ export default intlMiddleware;
 // for Path
 export const config = {
   // matcher: ["/((?!api|_next|.*\\..*).*)"],
-  matcher: ["/((?!api|_next|.*\\..*).*)", "/(ar|en)/:path*"],
-  // matcher: ["/", "/(de|en)/:path*"],
+  // matcher: ["/((?!api|_next|.*\\..*).*)", "/(ar|en|fr)/:path*"],
+  matcher: ["/", "/(ar|en|fr)/:path*"],
 };
 /*******************************
  * Notes:
